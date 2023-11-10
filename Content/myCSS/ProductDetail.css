@@ -1,0 +1,114 @@
+﻿body {
+}
+
+.flex-column {
+    display: grid;
+    grid-template-columns: 54% 46%;
+}
+
+.img-wapper {
+    display: flex;
+}
+
+#carouselExample {
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-wapper-button {
+    width: auto;
+    height: 3rem;
+}
+
+.carousel-control-prev {
+    top: 0;
+    bottom: initial;
+    left: initial
+}
+
+.carousel-inner {
+    width: 96px;
+    height: 100%
+}
+
+.carousel-item-img {
+    border: 0.0625rem solid #d5dee4;
+    border-radius: 0.25rem;
+    vertical-align: top;
+    padding: 0;
+    height: 5rem;
+    width: 5rem;
+    margin: 0.5rem;
+}
+
+.carousel-item-img-blue {
+    border: 0.125rem solid #0067a0;
+    border-radius: 0.25rem;
+    vertical-align: top;
+    padding: 0;
+    height: 5rem;
+    width: 5rem;
+    margin: 0.5rem;
+}
+
+.carousel-control-next {
+    bottom: 0;
+    top: initial;
+    right: initial
+}
+
+.imgViewer {
+    width: 100%;
+}
+
+#imgView {
+    width: 100%;
+    height: auto;
+}
+
+.detailText {
+    font-size: .875rem;
+    margin: 0 0 1rem 1.5rem;
+    padding-top: 1.25rem
+}
+
+.priceText {
+    font-size: 2.625rem;
+    font-weight: 500
+}
+
+.nav-link item {
+    background-color: #fff;
+    border: 0;
+}
+
+.One {
+    display: block;
+}
+
+.Two {
+    display: none;
+}
+
+table {
+    border: 1px solid black;
+}
+
+tr {
+    border: 1px solid black;
+}
+
+td:first-child {
+    border: 1px solid black;
+}
+
+td:last-child {
+    padding: 0.5rem;
+}
+
+.card-body {
+    width: 300px;
+}

@@ -1,0 +1,109 @@
+﻿@model Assignment2.ViewModels.ProductIndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+@Styles.Render("~/Content/myCSS/HomeIndex.css")
+@Scripts.Render("~/Scripts/myScripts/HomeIndex.js")
+
+
+<div class="content">
+    <div class="body-content-left">
+        <h2>Welcome to our snack supermarket!</h2>
+        <p>Here, we offer you a delicious, diverse, and enjoyable snack experience. Whether you are looking for classic snacks or trying out some novel flavors, we provide you with endless choices.</p>
+        <p>Thank you for your visit. We look forward to providing you with the best snack options to satisfy your taste buds.</p>
+        <p>Come and explore the wonderful world of snacks, let's enjoy delicious moments together!</p>
+
+    </div>
+    <a href="@Url.Action("Index","Products")" style="border: 1px solid #d4dee5;">
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/Content/Images/HomePage1.png" class="d-block w-100" alt="HomePage1">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Content/Images/HomePage2.png" class="d-block w-100" alt="HomePage2">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Content/Images/HomePage3.png" class="d-block w-100" alt="HomePage3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="demo" id="demo" >
+            <span id="one">
+                <img src="~/Content/Images/BeefJerky/image1.jpg" class="product-item-img" />
+                <img src="~/Content/Images/Chex Mix/image1.jpg" class="product-item-img" />
+                <img src="~/Content/Images/ChipsAhoy/image1.jpg" class="product-item-img" />
+                <img src="~/Content/Images/Kellogg/image1.jpg" class="product-item-img" />
+                <img src="~/Content/Images/Lay's/image1.jpg" class="product-item-img" />
+                <img src="~/Content/Images/MarkFruity/image1.jpg" class="product-item-img" />
+                <img src="~/Content/Images/Nuts/image1.jpg" class="product-item-img" />
+                <img src="~/Content/Images/OREO/image1.jpg" class="product-item-img" />
+                <img src="~/Content/Images/RITZ/image1.jpg" class="product-item-img" />
+                <img src="~/Content/Images/Smartfood/image1.jpg" class="product-item-img" />
+            </span>
+            <span id="two">
+            </span>
+        </div>
+        <script>
+            var demo = document.getElementById('demo');
+            var one = document.getElementById('one');
+            var two = document.getElementById('two');
+
+            two.innerHTML = one.innerHTML;
+
+            function marquee() {
+                if (demo.scrollLeft >= (demo.scrollWidth - demo.clientWidth)) {
+                    demo.scrollLeft = 0;
+                } else {
+                    demo.scrollLeft += 1;
+                }
+            }
+
+            var timer = setInterval(marquee, 10);</script>
+    </a>
+</div>
+<div class="less-content">
+    <div class="background-with-overlay">
+        <div class="text">
+            <h2>Snack attack, for less.</h2>
+            <p>Add a little something for your afternoon pick-me-up</p>
+            <button type="button" class="btn btn-primary">Shop now</button>
+        </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;">
+        <div class="list-group">
+            <div class="list-group-row">
+                <div style="width:60%;margin:0 auto;"><img src="~/Content/Images/Lay'sRanch/image1.jpg" style="width: 100%; height: auto;" /></div>
+                <div style="width:90%;margin:0 auto;"><p>Lay's Potato Chips Fried Pickles with Ranch Flavored</p><h4>$4.48</h4></div>
+
+            </div>
+            <div class="list-group-row">
+                <div style="width: 60%; margin: 0 auto;"><img src="~/Content/Images/RITZ/image1.jpg" style="width: 100%; height: auto;" /></div>
+                <div style="width:90%;margin:0 auto;"><p>RITZ Original Crackers</p><h4>$9.98</h4></div>
+            </div>
+        </div>
+        <div class="list-group">
+            <div class="list-group-row">
+                <div style="width: 60%; margin: 0 auto;"><img src="~/Content/Images/Smartfood/image1.jpg" style="width: 100%; height: auto;" /></div>
+                <div style="width:90%;margin:0 auto;"><p>Buffalo Wild Wings Buttery Garlic Popcorn</p><h4>$5.18</h4></div>
+            </div>
+            <div class="list-group-row">
+                <div style="width: 60%; margin: 0 auto;"><img src="~/Content/Images/MarkFruity/image1.jpg" style="width: 100%; height: auto;" /></div>
+                <div style="width:90%;margin:0 auto;"><p>Member's Mark Fruity Snacks</p><h4>$9.98</h4></div>
+            </div>
+        </div>
+    </div>
+</div>

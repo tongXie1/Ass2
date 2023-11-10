@@ -1,0 +1,171 @@
+﻿@model Assignment2.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@Styles.Render("~/Content/myCSS/ProductDetail.css")
+@Scripts.Render("~/Scripts/myScripts/ProductDetail.js")
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Products")">Snacks</a></li>
+        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Products", new { category = @Html.DisplayFor(model => model.Category.Name) })">@Html.DisplayFor(model => model.Category.Name)</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Html.DisplayFor(model => model.Name)</li>
+    </ol>
+</nav>
+<div class="flex-column">
+    <div class="img-wapper">
+        <div id="carouselExample" class="carousel slide">
+            <div class="img-wapper-button">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+                        </svg>
+                    </span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    @{
+                        var count = Directory.GetFiles(Server.MapPath("~" + @Html.DisplayFor(model => model.img) + "/")).ToList().Count;
+                        var pageCount = count / 4 + 1;
+                        var imgCount = count % 4;
+                        if (count >= 4)
+                        {
+                            imgCount = 4;
+                        }
+                        <button onclick="imgWrap(this)" class="carousel-item-img">
+                            <img src="@Html.DisplayFor(model => model.img)/image1.jpg" class="d-block w-100" />
+                        </button>
+                        for (int i = 2; i <= imgCount; i++)
+                        {
+                            <button onclick="imgWrap(this)" class="carousel-item-img">
+                                <img src="@Html.DisplayFor(model => model.img)/image@(i).jpg" class="d-block w-100" />
+                            </button>
+                        }
+                    }
+                </div>
+                <div class="carousel-item">
+                    @{
+                        for (int i = 3; i <= pageCount; i++)
+                        {
+                            if (i.Equals(pageCount))
+                            {
+                                for (int j = 4; j >= 1; j--)
+                                {
+                                    <button onclick="imgWrap(this)" class="carousel-item-img">
+                                        <img src="@Html.DisplayFor(model => model.img)/image@(count - j).jpg" class="d-block w-100" />
+                                    </button>
+                                }
+                            }
+                            else
+                            {
+                                for (int j = 1; j <= 4; j++)
+                                {
+                                    <button onclick="imgWrap(this)" class="carousel-item-img">
+                                        <img src="@Html.DisplayFor(model => model.img)/image@(j + 4 * i).jpg" class="d-block w-100" />
+                                    </button>
+                                }
+                            }
+                        }
+                    }
+                </div>
+            </div>
+            <div class="img-wapper-button">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+                        </svg>
+                    </span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="imgViewer">
+            <img id="imgView" src="@Html.DisplayFor(model => model.img)/image1.jpg" />
+        </div>
+    </div>
+    <div class="detailText">
+        <h1>@Html.DisplayFor(model => model.Name)</h1>
+        <h4><span class="badge rounded-pill text-bg-primary">@Html.DisplayFor(model => model.Category.Name)</span></h4>
+        <p class="priceText">$@Html.DisplayFor(model => model.Price)</p>
+        <p>
+            Prices may vary in club and online.
+            <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-info-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                </svg>
+            </button>
+        </p>
+        <div>
+            <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                <div class="card card-body">
+                    <p>
+                        <h5>Pricing information</h5>
+                    <p>Item prices may vary between online (for pickup, shipping or delivery) and in club.</p>
+                    <p>Item prices do not include fees for pickup, shipping or delivery (if applicable) unless noted in the item description.</p>
+                </div>
+            </div>
+        </div>
+        <div id="information">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">About this item</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <button class="nav-link item " id="1" aria-current="page" onclick="dixWrap(this)" style="background-color: #fff; border: 0;">Description</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link item" id="2" onclick="dixWrap(this)" style="background-color: #fff; border: 0;">Specifications</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="info One" id="1d">
+
+                <div id="text-box" style="overflow: hidden;">
+                    <p id="full-text">@Html.DisplayFor(model => model.Description)</p>
+                </div>
+                <button type="button" class="btn btn-primary" id="show-more" onclick="Show()">Show More</button>
+            </div>
+            <div class="info Two" id="2d">
+                <table>
+                    <tr>
+                        <td><strong>Shipping Info</strong></td>
+                        <td>
+                            <p>Standard - 4 to 10 business days</p>
+                            <p>Ship Info</p>
+                            <p>Shipping not available to Alaska, Hawaii or Puerto Rico</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Warranty</strong></td>
+                        <td>This product is covered by the Sam's Club Member Satisfaction Guarantee.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ingredients</strong></td>
+                        <td>@Html.DisplayFor(model => model.Ingredients)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Allergy Information</strong></td>
+                        <td>@Html.DisplayFor(model => model.AllergyInfo)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

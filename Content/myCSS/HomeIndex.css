@@ -1,0 +1,77 @@
+﻿
+h2{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+.content {
+    width:100%;
+    display: grid;
+    grid-template-columns: 28% 72%;
+}
+
+.body-content-left {
+    padding: 0 2rem;
+}
+
+.demo {
+    overflow-x: hidden;
+    width: 100%;
+    height: 151px;
+    background: #ccc;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.one {
+    width: 300px;
+    height: 100px;
+}
+
+.two {
+    width: 300px;
+    height: 100px;
+}
+.product-item-img {
+    height: 150px;
+}
+.background-with-overlay {
+    position: relative;
+    height: 37rem;
+    background-image: url(../../Content/Images/HomePage4.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+    .background-with-overlay::after {
+        content: "";
+        position: absolute;
+        top: 70%;
+        left: 0;
+        width: 100%;
+        height: 30%;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .background-with-overlay > .text {
+            position: absolute;
+            top: 85%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            z-index:10;
+    }
+.less-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 3rem;
+    border: 1px solid #d4dee5;
+    border-radius: 0.5rem;
+}
+.list-group {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 18.5rem;
+    border: #d4dee5;
+}
+.list-group-row {
+    padding: 1rem;
+}

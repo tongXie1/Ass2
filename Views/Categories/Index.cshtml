@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Assignment2.Models.Category>
+@Styles.Render("~/Content/myCSS/CategoryIndex.css")
+@Scripts.Render("~/Scripts/myScripts/CategoryIndex.js")
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Featured Categories</h2>
+
+<div class="list-group">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="@Url.Action("Index", "Products", new { category = Html.DisplayFor(modelItem => item.Name) })">
+                    <div class="product-item">
+                        <div class="item-content">
+                            <img src="@Html.DisplayFor(modelItem => item.Products.ElementAt(0).img)/image1.jpg" />
+                            <h5>@Html.DisplayFor(modelItem => item.Name)</h5>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        }
+    </ul>
+</div>
